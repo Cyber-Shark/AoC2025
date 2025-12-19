@@ -25,7 +25,7 @@ def range_checker_double(range_low,range_high):
             invalid_list.append(s)
 
 #to-do: solve for general case
-#notice pattern in string indices, and floor divisino number
+#notice pattern in string indices, and floor division number
 def range_checker_all(range_low,range_high):
     global invalid_list
     for number in range(int(range_low), int(range_high)+1):

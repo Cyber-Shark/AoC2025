@@ -1,6 +1,6 @@
 import re
 
-txt = open(r"C:\Users\ddamschen\OneDrive - Inventprise\Documents\AdventOfCode2025\Day3\input_test.txt",'r')
+txt = open(r"C:\Users\ddamschen\OneDrive - Inventprise\Documents\AdventOfCode2025\Day3\input.txt",'r')
 
 joltage_list = []
 
@@ -15,15 +15,16 @@ joltage_list = []
 with txt:
     for line in txt:
         joltage = ''
-        start = 0
-        print(f'Number {line[0:-1]}')
+        offset = 0
+        #print(f'Number {line[0:-1]}')
         for frame in reversed(range (1,13)): #increased range by 1 to account for \n char at end
-            digit = max(line[start:-frame])
-            start = line[start:-frame].index(digit)
-            joltage += line[start]
-            
-        print(f'Joltage: {joltage}\n')
+            digit = max(line[offset:-frame])
+            frame_index = line[offset:-frame].index(digit)
+            offset += frame_index
+            joltage += line[offset]
+            offset += 1
+        #print(f'Joltage: {joltage}\n')
         joltage_list.append(joltage)
 
 joltage_list_int = [int(x) for x in joltage_list]  
-print(f'Part 1 Solution: {sum(joltage_list_int)}')
+print(f'Part 2 Solution: {sum(joltage_list_int)}')
